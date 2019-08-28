@@ -8,44 +8,58 @@ public class A1Novice {
 		
 		Scanner scan = new Scanner(System.in);
 
-		// Your code follows here.
-		int customers = scan.nextInt(); //number of customers
-		double[] totals = new double[customers]; //array of total value of purchases
-		String[] firstnames = new String[customers]; //array for name storage
-		String[] lastnames = new String[customers];
-		int items = 0; //declare number of item types variable
+		/* Program that reads shopping data and reports amount each customer spends.
+		 * Input: In this order, separated by spaces;
+		 *		<number of customers> <first name> <last name> <number of different items> <name of item> <cost of one item>
+		 *			^This input is repeated accordingly based on number of customers and number of different items. 
+		 * Output: For each customer;
+		 * 		<first initial of name>. <last name>: <total money spent>
+		 */
+		
+		int customers = scan.nextInt(); //gets number of customers
+		
+		double[] totals = new double[customers]; //array holding totals each customer spends
+		String[] firstNames = new String[customers]; //array holding the names of the customers
+		String[] lastNames = new String[customers];
+		
 		
 		for (int i = 0; i< customers; i++ )
 		{
-			//store name of customers
-			firstnames[i] = scan.next();
-			lastnames[i] = scan.next();
-			//store number of items he/she has w/ local variable
-			items = scan.nextInt();
-			//storage for each items totals, names of items
-			double[] totalperitem = new double[items];
-			String[] itemname = new String[items];
-			int quantity = 0;
+			firstNames[i] = scan.next(); //obtains name of customers i
+			lastNames[i] = scan.next();
+			
+			int items = scan.nextInt(); //gets number of different items customer i has
+
+			double[] totalperitem = new double[items]; //array holding total spent on each item customer i has
+			String[] itemname = new String[items]; //array holding the name of each item
 			
 			for (int j = 0; j< items; j++)
 			{
-				quantity = scan.nextInt();
-				itemname[j] = scan.next();
-				double costperitem = scan.nextDouble();
-				totalperitem[j] = quantity * costperitem;
+				int quantity = scan.nextInt(); //gets quantity of a specific item purchased
+				
+				itemname[j] = scan.next(); //stores the name of that item (not necessary for A1Novice)
+				
+				double costperitem = scan.nextDouble(); //gets cost of one of that item
+				
+				totalperitem[j] = quantity * costperitem; //calculates and stores amount spent on a specific item
 			}
 			 
-			totals[i] = calculateValueSum(totalperitem);
+			totals[i] = calculateArraySum(totalperitem); //adds up the total purchases of each item
 			
 		}
-		for (int i = 0; i < customers; i++) {
-			System.out.println(firstnames[i].charAt(0)+". "+ lastnames[i] + ": " + String.format("%.2f", totals[i]) );
+		
+		for (int i = 0; i < customers; i++) { //prints out total spending for each customer
+			System.out.println(firstNames[i].charAt(0)+". "+ lastNames[i] + ": " + String.format("%.2f", totals[i]) );
 		}
 		
 	}
 	
-	//sum array method
-	static double calculateValueSum(double[] vals) {
+	/* Adds up each number in an array.
+	 * Input: double array
+	 * Output: total as a double
+	 */
+	
+	static double calculateArraySum(double[] vals) {
 		
 		double sum = 0;
 		
