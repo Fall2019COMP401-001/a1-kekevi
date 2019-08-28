@@ -57,6 +57,7 @@ public class A1Novice {
 	/* Adds up each number in an array.
 	 * Input: double array
 	 * Output: total as a double
+	 * **Alteration of KMP's calculateValueSum method in A1Example.
 	 */
 	
 	static double calculateArraySum(double[] vals) {
