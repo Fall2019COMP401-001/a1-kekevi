@@ -88,7 +88,7 @@ public class A1Adept {
 	static int lookUpIndexDouble(double lookUpNumber, double[] fromArray) {
 		int index = -1;
 		for (int i=0; i < fromArray.length; i++) {
-			if (Math.abs(lookUpNumber - fromArray[i]) < .01) {
+			if (Math.abs(lookUpNumber - fromArray[i]) < .001) {
 				index = i;
 			}
 		}
